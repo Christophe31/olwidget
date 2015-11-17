@@ -7,7 +7,7 @@ from distutils.core import setup
 root = os.path.abspath(os.path.dirname(__file__))
 os.chdir(root)
 
-VERSION = '0.61.0'
+VERSION = '0.61.1'
 
 # Make data go to the right place.
 # http://groups.google.com/group/comp.lang.python/browse_thread/thread/35ec7b2fed36eaec/2105ee4d9e8042cb
@@ -22,30 +22,15 @@ setup(name='django-olwidget',
     url='http://olwidget.org',
     packages=['olwidget'],
     package_dir={'': 'django-olwidget'},
-    data_files=[
-        ('olwidget/templates/olwidget', [
-            'django-olwidget/olwidget/templates/olwidget/admin_olwidget.html',
-            'django-olwidget/olwidget/templates/olwidget/editable_layer.html',
-            'django-olwidget/olwidget/templates/olwidget/multi_layer_map.html',
-            'django-olwidget/olwidget/templates/olwidget/info_layer.html',
-            'django-olwidget/olwidget/templates/olwidget/test_map_template.html',
-        ]),
-        ('olwidget/static/olwidget/css', [
-            'css/olwidget.css'
-        ]),
-        ('olwidget/static/olwidget/js', [
-            'js/olwidget.js',
-            'js/cloudmade.js',
-        ]),
-        ('olwidget/static/olwidget/img', [
-            'img/extra_edit_icons.png',
-            'img/jquery_ui_license.txt',
-            'img/popup_icons.png',
-        ]),
-        ('olwidget/templates/admin', [
-            'django-olwidget/olwidget/templates/admin/olwidget_change_list.html'
-        ]),
-    ],
+    package_data={
+        'olwidget': [
+            'static/olwidget/css/*',
+            'static/olwidget/img/*',
+            'static/olwidget/js/*',
+            'templates/admin/*',
+            'templates/olwidget/*'
+        ],
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
