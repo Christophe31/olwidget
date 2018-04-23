@@ -24,11 +24,11 @@ setup(name='django-olwidget',
     package_dir={'': 'django-olwidget'},
     data_files=[
         ('olwidget/templates/olwidget', [
-            'django-olwidget/olwidget/templates/olwidget/admin_olwidget.html',
-            'django-olwidget/olwidget/templates/olwidget/editable_layer.html',
-            'django-olwidget/olwidget/templates/olwidget/multi_layer_map.html',
-            'django-olwidget/olwidget/templates/olwidget/info_layer.html',
-            'django-olwidget/olwidget/templates/olwidget/test_map_template.html',
+            'olwidget/templates/olwidget/admin_olwidget.html',
+            'olwidget/templates/olwidget/editable_layer.html',
+            'olwidget/templates/olwidget/multi_layer_map.html',
+            'olwidget/templates/olwidget/info_layer.html',
+            'olwidget/templates/olwidget/test_map_template.html',
         ]),
         ('olwidget/static/olwidget/css', [
             'css/olwidget.css'
@@ -43,7 +43,7 @@ setup(name='django-olwidget',
             'img/popup_icons.png',
         ]),
         ('olwidget/templates/admin', [
-            'django-olwidget/olwidget/templates/admin/olwidget_change_list.html'
+            'olwidget/templates/admin/olwidget_change_list.html'
         ]),
     ],
     classifiers=[
