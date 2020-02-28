@@ -30,7 +30,7 @@ A complete list of options is in the olwidget documentation.
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin import helpers
 from django.contrib.gis.geos import GeometryCollection
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django import template
 from django.contrib.admin.options import IncorrectLookupParameters, csrf_protect_m
 from django.http import HttpResponseRedirect
@@ -157,7 +157,8 @@ class GeoModelAdmin(ModelAdmin):
             # the 'invalid=1' parameter was already in the query string, something
             # is screwed up with the database, so display an error page.
             if ERROR_FLAG in list(request.GET.keys()):
-                return render_to_response(
+                return render(
+                    request,
                     'admin/invalid_setup.html',
                     {'title': _('Database error')})
             return HttpResponseRedirect(request.path + '?' + ERROR_FLAG + '=1')
@@ -254,7 +255,9 @@ class GeoModelAdmin(ModelAdmin):
         # END MODIFICATION
 
         context_instance = template.RequestContext(request, current_app=self.admin_site.name)
-        return render_to_response(self.change_list_template or [
+        return render(
+            request,
+            self.change_list_template or [
             'admin/%s/%s/change_list.html' % (app_label, opts.object_name.lower()),
             'admin/%s/change_list.html' % app_label,
             'admin/change_list.html'
