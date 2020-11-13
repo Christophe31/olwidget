@@ -2,6 +2,7 @@ from django import forms
 # from django.forms.forms import get_declared_fields
 from django.contrib.gis.forms.fields import GeometryField
 from django.forms.fields import Field
+from django.forms.utils import pretty_name
 from collections import OrderedDict
 
 from olwidget.widgets import Map, BaseVectorLayer, EditableLayer
@@ -181,7 +182,7 @@ def apply_maps_to_modelform_fields(fields, maps, default_options=None,
             map_opts.update(default_options)
             map_opts.update(options or {})
             map_field = default_field_class(layer_fields, map_opts, layer_names=names,
-                label=", ".join(forms.forms.pretty_name(f) for f in field_list),
+                label=", ".join(pretty_name(f) for f in field_list),
                 template=template)
         if hasattr(fields, "insert"):
             fields.insert(min_pos, map_name, map_field)
