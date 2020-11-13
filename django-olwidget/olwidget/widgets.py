@@ -4,6 +4,7 @@ import copy
 from django.template.loader import render_to_string
 from django.conf import settings
 from django import forms
+from django.forms.utils import pretty_name
 from django.utils.safestring import mark_safe
 
 from olwidget import utils
@@ -264,7 +265,7 @@ class InfoLayer(BaseVectorLayer):
         info_json = json.dumps(wkt_array)
 
         if name and 'name' not in self.options:
-            self.options['name'] = forms.forms.pretty_name(name)
+            self.options['name'] = pretty_name(name)
 
         context = {
             'info_array': info_json,
@@ -293,7 +294,7 @@ class EditableLayer(BaseVectorLayer):
         if not attrs:
             attrs = {}
         if name and 'name' not in self.options:
-            self.options['name'] = forms.forms.pretty_name(name)
+            self.options['name'] = pretty_name(name)
         attrs['id'] = attrs.get('id', "id_%s" % id(self))
 
         wkt = utils.get_ewkt(value)
